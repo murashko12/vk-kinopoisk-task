@@ -2,9 +2,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import MovieCard from '../components/MovieCard';
 
-const API_KEY = 'S0E5P34-4H24F3W-MZE6933-JABY92A'
-
-
 export interface IMovieData {
     id: number;
     name: string;
@@ -19,24 +16,28 @@ export interface IMovieData {
 
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<IMovieData[]>([])
+    
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
-                    const movieIds = [345, 550, 666];
+                    const movieIds = []
+                    for(let i = 299; i <= 300; i++) {
+                        movieIds.push(i)
+                    }
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
-                            'X-API-KEY': API_KEY,
+                            'X-API-KEY': import.meta.env.VITE_API_KEY_1,
                             'accept': 'application/json',
                           },
                         })
                     );
                 
-                    const responses = await Promise.all(requests);
-                    const movies = responses.map((response) => response.data);
-                    setMovies(movies);
+                    const responses = await Promise.all(requests)
+                    const movies = responses.map((response) => response.data)
+                    setMovies(movies)
                 } catch (error) {
-                    console.error('Error fetching movies:', error);
+                    console.error('Error fetching movies:', error)
                 }
             };
             fetchMovieData();
@@ -44,8 +45,9 @@ const Movies: React.FC = () => {
     );
           
     return (
-        <div>
-            <ul className="flex gap-10">
+        <div className="">
+            
+            <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 {movies.map((movie) => (
                     <li key={movie.id}>
                         <MovieCard
