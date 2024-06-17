@@ -1,18 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import MovieCard from '../components/MovieCard';
-
-export interface IMovieData {
-    id: number;
-    name: string;
-    year: number;
-    rating: {
-        kp: number
-    };
-    poster: {
-        url: string
-    }
-}
+import { IMovieData } from '../types/IMovieData';
+import { Link } from 'react-router-dom';
 
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<IMovieData[]>([])
@@ -20,10 +10,10 @@ const Movies: React.FC = () => {
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
-                    const movieIds = []
-                    for(let i = 299; i <= 300; i++) {
-                        movieIds.push(i)
-                    }
+                    const movieIds = [299]
+                    // for(let i = 299; i <= 300; i++) {
+                    //     movieIds.push(i)
+                    // }
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
@@ -49,15 +39,17 @@ const Movies: React.FC = () => {
             
             <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 {movies.map((movie) => (
-                    <li key={movie.id}>
-                        <MovieCard
-                            id={movie.id} 
-                            name={movie.name} 
-                            year={movie.year} 
-                            rating={movie.rating} 
-                            poster={movie.poster} 
-                        />
-                    </li>
+                    <Link key={movie.id} to={`/${movie.id}`}>
+                        <li>
+                            <MovieCard
+                                id={movie.id} 
+                                name={movie.name} 
+                                year={movie.year} 
+                                rating={movie.rating} 
+                                poster={movie.poster} 
+                            />
+                        </li>
+                    </Link>
                 ))}
             </ul>
         </div>
