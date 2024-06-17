@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import MovieCard from '../components/MovieCard';
 import { IMovieData } from '../types/IMovieData';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<IMovieData[]>([])
@@ -39,7 +39,7 @@ const Movies: React.FC = () => {
             
             <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
                 {movies.map((movie) => (
-                    <Link key={movie.id} to={`/${movie.id}`}>
+                    // <Link key={movie.id} to={`/${movie.id}`}>
                         <li>
                             <MovieCard
                                 id={movie.id} 
@@ -49,7 +49,7 @@ const Movies: React.FC = () => {
                                 poster={movie.poster} 
                             />
                         </li>
-                    </Link>
+                    // </Link>
                 ))}
             </ul>
         </div>

@@ -2,17 +2,26 @@ import React from 'react'
 import { IoMdHeart } from "react-icons/io";
 import { IoMdStar } from "react-icons/io";
 import { IMovieData } from '../types/IMovieData';
+import { useDispatch } from 'react-redux';
+import { addRemoveFavorites } from '../redux/slices/favoriteSlice';
 
 const MovieCard: React.FC<IMovieData> = (data) => {
+    
+    const dispatch = useDispatch()
+
+    const onAddRemoveFavorites = (data: IMovieData) => {
+        dispatch(addRemoveFavorites(data))
+    }
+
     return (
         <div key={data.id} className="relative w-[260px] h-[500px] mb-10 shadow-xl rounded-lg overflow-hidden">
             <div className="absolute top-2 left-2 flex justify-around items-center w-24 h-12 bg-slate-200 rounded-md shadow-xl">
                 <IoMdStar size={30} color="#ebae34"/>
                 <p>{data.rating.kp}</p>
             </div>
-            <div className="absolute top-2 right-2 flex items-center justify-center w-12 h-12 bg-slate-200 rounded-md shadow-xl">
+            <button onClick={() => onAddRemoveFavorites(data)} className="absolute top-2 right-2 flex items-center justify-center w-12 h-12 bg-slate-200 rounded-md shadow-xl">
                 <IoMdHeart size={30} color="red"/>
-            </div>
+            </button>
             <div className="w-full">
                 <img src={data.poster.url} alt={`Постекр к фильму ${data.name}`} />
             </div>

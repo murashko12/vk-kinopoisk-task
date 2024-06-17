@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { IMovieData } from '../types/IMovieData'
+import { IoMdArrowRoundBack } from 'react-icons/io'
 
-const MoviePage = () => {
+const MoviePage: React.FC = () => {
     const {id} = useParams()
     const [movie, setMovie] = useState<IMovieData | null>(null)
     useEffect(() => {
@@ -24,14 +25,20 @@ const MoviePage = () => {
     }, [id])
     return (
         <div>
+            <Link to={'/'}>
+                <button className="">
+                    <IoMdArrowRoundBack size={30} />
+                </button>
+            </Link>
             {movie ? (
-            <div>
-                <h2>{movie.name}</h2>  
-                <img src={movie.poster.url} alt={`Постекр к фильму ${movie.name}`} />          
-            </div>
-            ) : (
-                <p>Loading...</p>
-            )}
+                <div>
+                    <h2>{movie.name}</h2>  
+                    <img src={movie.poster.url} alt={`Постекр к фильму ${movie.name}`} />          
+                </div>
+                ) : (
+                    <p>Loading...</p>
+                )
+            }
         </div>
     )
 }
