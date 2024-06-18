@@ -8,8 +8,8 @@ const Navbar = () => {
     const [favorites, setFavorites] = useState<boolean>(false);
 
     return (
-        <header className="flex w-full h-16 justify-center items-center bg-black ">
-            <nav className="flex w-11/12 justify-between items-center">
+        <header className="fixed top-0 z-10 flex w-full h-16 justify-center items-center bg-black ">
+            <nav className="flex w-[60%] justify-between items-center">
                 <Link to={'./'} onClick={() => setFavorites(false)}>
                     <img src="/src/assets/kinopoiskLogo.svg" alt="Кинопоиск логотип" />
                 </Link>

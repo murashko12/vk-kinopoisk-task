@@ -4,6 +4,7 @@ import { IoMdStar } from "react-icons/io";
 import { IMovieData } from '../types/IMovieData';
 import { useDispatch } from 'react-redux';
 import { addRemoveFavorites } from '../redux/slices/favoriteSlice';
+import { Link } from 'react-router-dom';
 
 const MovieCard: React.FC<IMovieData> = (data) => {
     
@@ -25,7 +26,9 @@ const MovieCard: React.FC<IMovieData> = (data) => {
             <div className="w-full">
                 <img src={data.poster.url} alt={`Постекр к фильму ${data.name}`} />
             </div>
-            <h2 className="text-2xl font-black text-center">{data.name}</h2>
+            <Link key={data.id} to={`/${data.id}`}>
+                <h2 className="text-2xl font-black text-center">{data.name}</h2>
+            </Link>
             <div className="flex w-full justify-around">
                 <p>год:</p>
                 <p>{data.year}</p>
