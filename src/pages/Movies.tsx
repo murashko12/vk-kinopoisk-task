@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import MovieCard from '../components/MovieCard';
 import { IMovieData } from '../types/IMovieData';
-// import { moviesTest } from '../data/data';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 
 const Movies: React.FC = () => {
@@ -27,8 +26,6 @@ const Movies: React.FC = () => {
                     const responses = await Promise.all(requests)
                     const movies = responses.map((response) => response.data)
                     setMovies(movies)
-                    
-                    console.log(movies);
                     
                 } catch (error) {
                     console.error('Error fetching movies:', error)

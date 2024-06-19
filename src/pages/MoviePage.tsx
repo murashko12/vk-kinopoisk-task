@@ -17,7 +17,6 @@ const MoviePage: React.FC = () => {
                     },
                 })
                 setMovie(response.data)
-                console.log(response.data);
                 
             } catch (error) {
                 console.error('Error fetching movie data:', error);
