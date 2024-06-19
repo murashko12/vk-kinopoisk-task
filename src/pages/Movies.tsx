@@ -11,7 +11,7 @@ const Movies: React.FC = () => {
         const fetchMovieData = async () => {
             try {
                     const movieIds = []
-                    for(let i = 299; i <= 379; i++) {
+                    for(let i = 299; i <= 307; i++) {
                         movieIds.push(i)
                     }
                     const requests = movieIds.map((id) =>
