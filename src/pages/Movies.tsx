@@ -11,7 +11,8 @@ const Movies: React.FC = () => {
     const [filteredMovies, setFilteredMovies] = useState<IMovieData[]>([]);
     const [ratingFilter, setRatingFilter] = useState<number | null>(null);
     const [yearFilter, setYearFilter] = useState<number | null>(null);
-    // const [genresFilter, setGenresFilter] = useState<IGenre | null>(null)
+    const [genreFilter, setGenreFilter] = useState<string | null>(null);
+
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -23,7 +24,7 @@ const Movies: React.FC = () => {
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
-                            'X-API-KEY': import.meta.env.VITE_API_KEY_2,
+                            'X-API-KEY': import.meta.env.VITE_API_KEY_4,
                             'accept': 'application/json',
                           },
                         })
@@ -69,61 +70,39 @@ const Movies: React.FC = () => {
     // filter
 
     useEffect(() => {
-        const filtered = movies.filter((movie) => {
-            if (ratingFilter !== null && movie.rating.kp < ratingFilter) {
-                return false;
-            }
-            if (yearFilter !== null && movie.year <= yearFilter) {
-                return false;
-            }
-            // if (genresFilter !== null && movie.genres.includes(genresFilter))
-            // return true;
+        const filteredMovies = movies.filter((movie) => {
+          const ratingMatch = ratingFilter === null || movie.rating.kp >= ratingFilter;
+          const yearMatch = yearFilter === null || movie.year >= yearFilter;
+          const genreMatch = genreFilter === null || movie.genres.some((genre) => genre.name === genreFilter);
+          return ratingMatch && yearMatch && genreMatch;
         });
-            setFilteredMovies(filtered);
-        }, [movies, ratingFilter, yearFilter])
-    
-        const handleRatingFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-            setRatingFilter(event.target.value ? Number(event.target.value) : null);
-        }
-    
-        const handleYearFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-            setYearFilter(event.target.value ? Number(event.target.value) : null);
-        }
+        setFilteredMovies(filteredMovies);
+      }, [movies, ratingFilter, yearFilter, genreFilter]);
 
-        // const handleGenresFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        //     setGenresFilter(event.target.value || null)
-        // }
     
     return (
         <div className="flex flex-col items-center mt-24">
             <div className="flex items-center justify-around rounded-lg bg-black w-[60%] mb-8 h-16">
-                <div>
-                    <label htmlFor="ratingFilter" className="text-white">РЕЙТИНГ: </label>
-                    <select id="ratingFilter" value={ratingFilter || ''} onChange={handleRatingFilterChange}>
-                        <option value="">Все</option>
-                        <option value="5">5 и выше</option>
-                        <option value="7">7 и выше</option>
-                        <option value="8">8 и выше</option>
+                
+                <label className="text-white flex gap-2" htmlFor="ratingFilter">
+                    Рейтинг: 
+                    <input className="text-black w-24 rounded-sm" type="number" value={ratingFilter || ''} onChange={(e) => setRatingFilter(e.target.value ? Number(e.target.value) : null)} />
+                </label>
+                <label className="text-white flex gap-2" htmlFor="ratingFilter">
+                    Год:
+                    <input className="text-black w-24 rounded-sm" type="number" value={yearFilter || ''} onChange={(e) => setYearFilter(e.target.value ? Number(e.target.value) : null)} />
+                </label>
+                <label className="text-white flex gap-2" htmlFor="ratingFilter">
+                    Жанры:
+                    <select className="text-black w-24 rounded-sm" value={genreFilter || ''} onChange={(e) => setGenreFilter(e.target.value || null)}>
+                    <option value="">All</option>
+                    {Array.from(new Set(movies.flatMap((movie) => movie.genres.map((genre) => genre.name)))).map((genre) => (
+                        <option key={genre} value={genre}>
+                            {genre}
+                        </option>
+                    ))}
                     </select>
-                </div>
-                <div>
-                    <label htmlFor="yearFilter" className="text-white">ГОД: </label>
-                    <select id="yearFilter" value={yearFilter || ''} onChange={handleYearFilterChange}>
-                        <option value="">Все</option>
-                        <option value="1990">1990</option>
-                        <option value="2000">2000</option>
-                        <option value="2010">2010</option>
-                    </select>
-                </div>
-                {/* <div> */}
-                    {/* <label className="text-white" htmlFor="ratingFilter">ЖАНРЫ: </label>
-                    <select  id="ratingFilter">
-                        <option value="">Все</option>
-                        <option value="5">5 и выше</option>
-                        <option value="7">7 и выше</option>
-                        <option value="8">8 и выше</option>
-                    </select> */}
-                {/* </div> */}
+                </label>
             </div>
             <ul className="grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
                 {filteredMovies.slice(firstIndex, lastIndex).map((movie) => (
