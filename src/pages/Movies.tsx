@@ -4,7 +4,6 @@ import MovieCard from '../components/MovieCard';
 import { IMovieData } from '../types/IMovieData';
 // import { moviesTest } from '../data/data';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
-// import { Link } from 'react-router-dom';
 
 const Movies: React.FC = () => {
     const [movies, setMovies] = useState<IMovieData[]>([])
@@ -12,14 +11,14 @@ const Movies: React.FC = () => {
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
-                    const movieIds = [299,300,301,302,303]
+                    const movieIds = [300]
                     // for(let i = 299; i <= 300; i++) {
                     //     movieIds.push(i)
                     // }
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
-                            'X-API-KEY': import.meta.env.VITE_API_KEY_2,
+                            'X-API-KEY': import.meta.env.VITE_API_KEY_3,
                             'accept': 'application/json',
                           },
                         })
@@ -71,12 +70,14 @@ const Movies: React.FC = () => {
                 {records.map((movie) => (
                     <li key={movie.id}>
                         <MovieCard
-                            id={movie.id} 
-                            name={movie.name} 
-                            year={movie.year} 
-                            rating={movie.rating} 
-                            poster={movie.poster} 
-                        />
+                            id={movie.id}
+                            name={movie.name}
+                            year={movie.year}
+                            rating={movie.rating}
+                            poster={movie.poster}
+                            countries={[]}
+                            shortDescription={''}
+                            persons={[]} genres={[]}                        />
                     </li>
                 ))}
             </ul>

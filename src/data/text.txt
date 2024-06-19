@@ -1,0 +1,148 @@
+ageRating: 12
+alternativeName: "The Lizzie McGuire Movie"
+audience: 
+(3) [{…}, {…}, {…}]
+backdrop
+: 
+{url: 'https://image.openmoviedb.com/kinopoisk-ott-images/374297/2a00000177fbf21f44f8c5101cfb16d448ed/orig', previewUrl: 'https://image.openmoviedb.com/kinopoisk-ott-images/374297/2a00000177fbf21f44f8c5101cfb16d448ed/x1000'}
+budget
+: 
+{value: 17000000, currency: '$'}
+countries
+: 
+[{…}]
+deletedAt
+: 
+null
+description
+: 
+"Тринадцатилетняя школьница Лиззи Магуайер и ее приятели Гордо, Кейт и Эсан собираются оттянуться по полной программе во время их поездки с классом в Италию.\n\nНо там случается весьма неожиданное происшествие: девочку ошибочно принимают за итальянскую поп-звезду Изабеллу, да к тому же девушка влюбляется в бывшего дружка Изабеллы Паоло. Когда родители Лизи обо всем узнают, они вместе с ее братом Мэттом срочно вылетают в Италию.\n\nНо Лиззи уже не та закомплексованная девочка-подросток, кем была раньше, она до такой степени вжилась в роль певицы, что и на самом деле стала самой настоящей звездой."
+distributors
+: 
+{distributor: null, distributorRelease: 'Уолт Дисней Компани СНГ'}
+enName
+: 
+null
+externalId
+: 
+{imdb: 'tt0306841', tmdb: 18736, kpHD: '4255a9dbf9244d6e8b6d49e49c76074e'}
+facts
+: 
+null
+fees
+: 
+{world: null, usa: null}
+genres
+: 
+(5) [{…}, {…}, {…}, {…}, {…}]
+id
+: 
+300
+images
+: 
+{framesCount: 10}
+isSeries
+: 
+false
+lists
+: 
+[]
+logo
+: 
+{url: 'https://avatars.mds.yandex.net/get-ott/1672343/2a00000177fccf7ff6db2d0668e206ea47df/orig'}
+movieLength
+: 
+94
+name
+: 
+"Лиззи Магуайр"
+names
+: 
+(5) [{…}, {…}, {…}, {…}, {…}]
+networks
+: 
+null
+persons
+: 
+(26) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+poster
+: 
+{url: 'https://image.openmoviedb.com/kinopoisk-images/4303601/a60e881c-c989-4a26-bbaf-c8323ffbf600/orig', previewUrl: 'https://image.openmoviedb.com/kinopoisk-images/4303601/a60e881c-c989-4a26-bbaf-c8323ffbf600/x1000'}
+premiere
+: 
+{world: '2003-04-26T00:00:00.000Z', dvd: '2011-06-14T00:00:00.000Z'}
+productionCompanies
+: 
+(2) [{…}, {…}]
+rating
+: 
+{kp: 6.314, imdb: 5.5, filmCritics: 5.3, russianFilmCritics: 0, await: null}
+ratingMpaa
+: 
+"pg"
+seasonsInfo
+: 
+null
+sequelsAndPrequels
+: 
+[{…}]
+seriesLength
+: 
+null
+shortDescription
+: 
+"Лиззи едет в Рим, где ее принимают за поп-звезду. Финальные похождения школьницы в исполнении Хилари Дафф"
+similarMovies
+: 
+(5) [{…}, {…}, {…}, {…}, {…}]
+slogan
+: 
+"Lizze McGuire goes to Rome."
+spokenLanguages
+: 
+[{…}]
+status
+: 
+null
+technology
+: 
+{hasImax: false, has3D: false}
+ticketsOnSale
+: 
+false
+top10
+: 
+null
+top250
+: 
+null
+totalSeriesLength
+: 
+null
+type
+: 
+"movie"
+typeNumber
+: 
+1
+updatedAt
+: 
+"2024-06-01T09:48:16.067Z"
+videos
+: 
+{trailers: Array(4)}
+votes
+: 
+{kp: 11362, imdb: 42195, filmCritics: 102, russianFilmCritics: 0, await: 0}
+watchability
+: 
+{items: Array(0)}
+year
+: 
+2003
+[[Prototype]]
+: 
+Object
+length
+: 
+1
