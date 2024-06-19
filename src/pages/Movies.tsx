@@ -10,10 +10,10 @@ const Movies: React.FC = () => {
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
-                    const movieIds = [300]
-                    // for(let i = 299; i <= 300; i++) {
-                    //     movieIds.push(i)
-                    // }
+                    const movieIds = []
+                    for(let i = 299; i <= 379; i++) {
+                        movieIds.push(i)
+                    }
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
@@ -38,7 +38,7 @@ const Movies: React.FC = () => {
     
     // Pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const recordsPerPage = 6
+    const recordsPerPage = 50
     const lastIndex = currentPage * recordsPerPage
     const firstIndex = lastIndex - recordsPerPage
     const records = movies.slice(firstIndex, lastIndex)

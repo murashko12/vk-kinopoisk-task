@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Приложение КИНОПОИСК
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение написано с использованием [Кинопоиск API](https://kinopoisk.dev/)
 
-Currently, two official plugins are available:
+Для запуска приложения на своем компьютере необходимо:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- склонировать себе нужную директорию проект с GitHub командой в терминале или рабочей строке `git clone https://github.com/murashko12/vk-kinopoisk-task.git`
 
-## Expanding the ESLint configuration
+- перейти в проект командой `cd vk-kinopoisk-task`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- установить необходимые зависимости для работы программы командой `npm i`
 
-- Configure the top-level `parserOptions` property like this:
+- запустить проект командой `npm run dev`
 
+- перейти в браузере по адресу локального узла `http://localhost:5173/`
+
+## Количество отображаемых фильмов 
+
+По умолчанию всего отображается 80 фильмов (начиная с id фильма 299 и заканчивая id 379)
+в файле `/vk-kinopoisk-task/src/pages/Movies.tsx`
 ```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+const movieIds = []
+for(let i = 299; i <= 379; i++) {
+  movieIds.push(i)
 }
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Благодаря пагинации можно отобразить нужное количество фильмов просто указав значение константе `recordsPerPage`
+```js
+const recordsPerPage = 50
+```
