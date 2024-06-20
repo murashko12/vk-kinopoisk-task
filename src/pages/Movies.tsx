@@ -24,7 +24,7 @@ const Movies: React.FC = () => {
                     const requests = movieIds.map((id) =>
                         axios.get(`https://api.kinopoisk.dev/v1.4/movie/${id}`, {
                           headers: {
-                            'X-API-KEY': import.meta.env.VITE_API_KEY,
+                            'X-API-KEY': import.meta.env.VITE_API_KEY_4,
                             'accept': 'application/json',
                           },
                         })
